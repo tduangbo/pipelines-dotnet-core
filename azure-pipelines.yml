@@ -25,3 +25,8 @@ steps:
   inputs:
     version: '3.0.x'
     packageType: runtime
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'PublishThisPipeLine'
+    publishLocation: 'pipeline'
