@@ -6,9 +6,19 @@
 trigger:
 - master
 
-pool:
-  vmImage: ubuntu-latest
-
+- stage: deploy
+  jobs:
+  - deployment: DeployWeb
+    displayName: deploy Web App
+    pool:
+      vmImage: 'Ubuntu-latest'
+    # creates an environment if it doesn't exist
+    environment: 'Yeah New Environment'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo Hello world
 variables:
   buildConfiguration: 'Release'
 
