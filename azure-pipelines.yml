@@ -22,26 +22,3 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
 
 
-
-- task: NuGetCommand@2
-  inputs:
-    command: 'restore'
-    restoreSolution: '**/*.sln'
-    feedsToUse: 'select'
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
-
-- task: UseDotNet@2
-  inputs:
-    version: '5.0.x'
-    includePreviewVersions: true # Required for preview versions
-
-- task: UseDotNet@2
-  inputs:
-    version: '3.0.x'
-    packageType: runtime
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: 'PublishThisPipeLine'
-    publishLocation: 'pipeline'
